@@ -1,11 +1,9 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
-// console.log(galleryItems);
+const imageGalleryListEl = document.querySelector(".gallery");
 
-const imageGalleryEl = document.querySelector(".gallery");
-
-imageGalleryEl.addEventListener("click", onImgClickModal);
+imageGalleryListEl.addEventListener("click", onImgClickModal);
 
 const galleryItemEl = galleryItems
   .map(
@@ -14,6 +12,8 @@ const galleryItemEl = galleryItems
     <a class="gallery__link" href="${original}">
     <img 
       class="gallery__image"
+      width ="500"
+      loading="lazy"
       src="${preview}"
       data-source="${original}"
       alt="${description}"
@@ -21,7 +21,7 @@ const galleryItemEl = galleryItems
   )
   .join("");
 
-imageGalleryEl.innerHTML = galleryItemEl;
+imageGalleryListEl.insertAdjacentHTML("beforeend", galleryItemEl);
 
 function onImgClickModal(event) {
   event.preventDefault();
